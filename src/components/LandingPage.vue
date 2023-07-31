@@ -22,6 +22,9 @@
 <p class='overviewDescription'>{{weatherToday.text}}</p>
 
 <p class='currentDate'>Today - {{currentDate}}</p>
+<p class="overviewLocation material-icons-outlined">
+location_on <span>{{currentLocation}}</span>
+</p>
   </div>
 
 
@@ -68,6 +71,10 @@ export default {
       let date = currentDateString.slice(8,11)
 
         return day+', '+date + month
+    },
+    currentLocation(){
+      //normally, I would use geolocation and google API to get the city based on the visitor, however, due to security reasons, I don't want my key to be online, so I will hardcode London here
+      return "London"
     }
   },
   methods:{

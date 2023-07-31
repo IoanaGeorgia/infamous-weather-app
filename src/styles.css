@@ -25,6 +25,10 @@ button{
   width:80%;
   padding:2em 0em 0em 0em;
 }
+.overviewLocation{
+  color:var(--darkGray);
+  text-align: center;
+}
 .overviewTemp{
   color:white;
   font-size:60px;
