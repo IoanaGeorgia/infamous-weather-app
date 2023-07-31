@@ -16,8 +16,10 @@
 <!-- <img src='https://cdn.weatherapi.com/weather/64x64/day/296.png'> -->
 
 <!-- <span>{{"https"+weatherToday.icon}}</span> -->
-<img src={{getIcon(weatherToday.icon)}}>
-<span>{{weatherToday.text}}</span>
+<img class='overviewImage' :src="getIcon(weatherToday.icon)">
+<p class='overviewTemp'>{{weatherToday.temp_c}}<span class='overviewTempDegrees'>°C</span>
+</p>
+<p class='overviewDescription'>{{weatherToday.text}}</p>
   </div>
 
 

@@ -3,15 +3,38 @@
   --darkBlue:rgb(0, 0, 42);
   --lightBlue:rgb(33, 33, 74);
   --darkGray:#a1a1a1;
+  --lightGray:#cacaca;
 }
 
 body{
   background:var(--darkBlue);
   padding:0px;
   margin:0px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 button{
   cursor:pointer;
+}
+.overviewImage{
+  width:80%;
+  padding:2em 0em 0em 0em;
+}
+.overviewTemp{
+  color:white;
+  font-size:60px;
+  font-weight: bolder;
+  text-align: center;
+  margin:0px;
+}
+.overviewDescription{
+  color:var(--lightGray);
+  font-size:18px;
+  text-align: center;
+}
+.overviewTempDegrees{
+  color:var(--lightGray);
+  font-weight: lighter;
+  font-size:25px;
 }
 .overview{
   background:var(--lightBlue);
