@@ -22,8 +22,12 @@
 <p class='overviewDescription'>{{weatherToday.text}}</p>
 
 <p class='currentDate'>Today - {{currentDate}}</p>
-<p class="overviewLocation material-icons-outlined">
-location_on <span>{{currentLocation}}</span>
+
+<p class='overviewLocation'>
+<span class="material-icons" style='font-size:20px'>
+location_on 
+</span>
+<span>London</span>
 </p>
   </div>
 

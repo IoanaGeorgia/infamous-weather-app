@@ -18,16 +18,22 @@ button{
 .currentDate{
   color:var(--darkGray);
   font-size:14px;
-  margin-top:10vh;
+  margin-top:13vh;
+  margin-bottom:5vh;
   text-align: center;
 }
 .overviewImage{
   width:80%;
   padding:2em 0em 0em 0em;
+  display: block;
+  margin:auto;
 }
 .overviewLocation{
   color:var(--darkGray);
-  text-align: center;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+
 }
 .overviewTemp{
   color:white;
@@ -40,6 +46,7 @@ button{
   color:var(--lightGray);
   font-size:18px;
   text-align: center;
+  margin-top:3em;
 }
 .overviewTempDegrees{
   color:var(--lightGray);
@@ -51,6 +58,7 @@ button{
   width:25%;
   padding:5vh 5vh;
   height:90vh;
+  position: relative;
 }
 .overviewHeader{
   /* background:red; */
