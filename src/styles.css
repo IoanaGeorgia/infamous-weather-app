@@ -4,6 +4,7 @@
   --lightBlue:rgb(33, 33, 74);
   --darkGray:#a1a1a1;
   --lightGray:#cacaca;
+  --buttonBlue:rgb(52, 89, 222);
 }
 
 body{
@@ -15,6 +16,47 @@ body{
 button{
   cursor:pointer;
 }
+.searchInputWrapper{
+  display: flex;
+  justify-content: center;
+  border: 1px solid var(--lightGray);
+  padding:4px;
+  width:70%;
+}
+.searchButton{
+  background-color:var(--buttonBlue);
+  color:white;
+  border:none;
+  margin-left: 15px;
+  padding:10px;
+}
+.searchIcon{
+  color:var(--darkGray);
+  font-size:20px;
+  padding:2px 0px;
+  margin:2px;
+}
+.searchInput{
+  background-color: transparent;
+  border:none;
+  outline:none;
+  width:80%;
+  caret-color: var(--lightGray);
+}
+.overviewSearch{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top:3vh;
+}
+.overviewCloseButton{
+  background:transparent;
+  border:none;
+  color:white;
+  position: absolute;
+  top:1vh;
+  right: 5vh;
+}
 .currentDate{
   color:var(--darkGray);
   font-size:14px;
@@ -23,7 +65,7 @@ button{
   text-align: center;
 }
 .overviewImage{
-  width:80%;
+  width:70%;
   padding:2em 0em 0em 0em;
   display: block;
   margin:auto;

@@ -1,10 +1,10 @@
 <template>
   <div class='mainWrapper'>
 
-  <div class='overview'>
+  <div v-if='!searchOpened' class='overview'>
 
   <div class='overviewHeader'>
-  <button class='overviewSearchButton'> Search for places </button>
+  <button class='overviewSearchButton' @click="searchPlaces()"> Search for places </button>
   <button
             class="material-icons-outlined overviewLocationButton"
             style="font-size: 21px"
@@ -13,9 +13,6 @@
           </button>
   </div>
 
-<!-- <img src='https://cdn.weatherapi.com/weather/64x64/day/296.png'> -->
-
-<!-- <span>{{"https"+weatherToday.icon}}</span> -->
 <img class='overviewImage' :src="getIcon(weatherToday.icon)">
 <p class='overviewTemp'>{{weatherToday.temp_c}}<span class='overviewTempDegrees'>°C</span>
 </p>
@@ -31,6 +28,23 @@ location_on
 </p>
   </div>
 
+  <div v-else class='overview'>
+ <button @click="searchPlaces()" class='overviewCloseButton'> <span class="material-icons-outlined">
+close
+</span>
+</button>
+
+
+  <div class='overviewSearch'>
+  <span class='searchInputWrapper'>
+  <span class="searchIcon material-icons-outlined">
+search
+</span>
+<input class='searchInput'>
+</span>
+<button class='searchButton'>Search</button>
+  </div>
+  </div>
 
 
   <div class='details'>
@@ -48,6 +62,7 @@ export default {
   name: 'LandingPage',
   data(){
     return{
+      searchOpened:true,
       weatherObj:{},
       weatherToday:{
           icon:'',
@@ -82,6 +97,9 @@ export default {
     }
   },
   methods:{
+    searchPlaces(){
+      this.searchOpened=!this.searchOpened
+    },
     getIcon(a){
       console.log("https:"+a)
       return "https:"+a
