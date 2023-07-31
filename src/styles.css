@@ -1,0 +1,40 @@
+
+:root{
+  --darkBlue:rgb(0, 0, 42);
+  --lightBlue:rgb(33, 33, 74);
+  --darkGray:#a1a1a1;
+}
+
+body{
+  background:var(--darkBlue);
+  padding:0px;
+  margin:0px;
+}
+button{
+  cursor:pointer;
+}
+.overview{
+  background:var(--lightBlue);
+  width:25%;
+  padding:5vh 5vh;
+  height:90vh;
+}
+.overviewHeader{
+  /* background:red; */
+  display:flex;
+  justify-content: space-between;
+}
+.overviewSearchButton{
+  background: var(--darkGray);
+  color:white;
+  border:none;
+  padding:0px 15px;
+}
+.overviewLocationButton{
+  background:var(--darkGray);
+  color:white;
+  border:none;
+  border-radius: 50%;
+  height:33px;
+  width:33px;
+}
