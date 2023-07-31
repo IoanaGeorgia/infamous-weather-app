@@ -20,6 +20,8 @@
 <p class='overviewTemp'>{{weatherToday.temp_c}}<span class='overviewTempDegrees'>°C</span>
 </p>
 <p class='overviewDescription'>{{weatherToday.text}}</p>
+
+<p class='currentDate'>Today - {{currentDate}}</p>
   </div>
 
 
@@ -56,6 +58,17 @@ export default {
   mounted(){
     console.log('brr')
     this.getWeather()
+  },
+  computed:{
+    currentDate(){
+      let current = new Date()
+      let currentDateString = current.toDateString()
+      let day = currentDateString.slice(0,4)
+      let month = currentDateString.slice(4,8)
+      let date = currentDateString.slice(8,11)
+
+        return day+', '+date + month
+    }
   },
   methods:{
     getIcon(a){
