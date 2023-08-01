@@ -55,19 +55,22 @@
     </p>
 
     <div class='forecastWrapper'>
-    <div v-for='day in forecastObject' class='forecast'>
-      <p class='forecastDate'>{{day.date}}</p>
-          <img class="forecastImage" :src="getIcon(day.icon)" />
+    <div v-for='day of Object.keys(forecastObject)' class='forecast'>
+
+    <p v-if="day === 'first'" class='forecastDate'>Tomorrow</p>
+    <p v-else class='forecastDate'>{{futureDate(forecastObject[day].date)}}</p>
+
+          <img class="forecastImage" :src="getIcon(forecastObject[day].icon)" />
 
 <p class='forecastDegreesWrapper'>
       <p class="forecastDegrees">
-      <span v-if="degrees==='C'"> {{ day.maxtemp_c }}</span>
-      <span v-else> {{ day.maxtemp_f }}</span>°{{degrees}}
+      <span v-if="degrees==='C'"> {{ forecastObject[day].maxtemp_c }}</span>
+      <span v-else> {{ forecastObject[day].maxtemp_f }}</span>°{{degrees}}
       </p>
 
       <p class="forecastDegrees">
-      <span v-if="degrees==='C'"> {{ day.mintemp_c }}</span>
-      <span v-else> {{ day.mintemp_f }}</span>°{{degrees}}
+      <span v-if="degrees==='C'"> {{ forecastObject[day].mintemp_c }}</span>
+      <span v-else> {{ forecastObject[day].mintemp_f }}</span>°{{degrees}}
       </p>
     </p>
     </div>
@@ -128,6 +131,15 @@ export default {
     }
   },
   methods: {
+        futureDate(timestamp){
+      let dateFormat = new Date(timestamp *1000);
+      let currentDateString = dateFormat.toDateString();
+      let day = currentDateString.slice(0, 4);
+      let month = currentDateString.slice(4, 8);
+      let date = currentDateString.slice(8, 11);
+      return day + ', ' + date + month;
+
+    },
     setDegrees(deg){
         this.degrees=deg
     },
@@ -154,7 +166,7 @@ export default {
         `https://api.weatherapi.com/v1/forecast.json?key=51b610f3b328481a908142828233107&q=${loc}&days=3&aqi=no&alerts=no`);
       const json = await response.json();
       this.weatherObj = json;
-      console.log(this.weatherObj.forecast.forecastday[0].day)
+      console.log(this.weatherObj.forecast.forecastday[0])
       this.weatherToday = {
         icon: json.current.condition.icon,
         text: json.current.condition.text,
@@ -169,7 +181,7 @@ export default {
 
       this.forecastObject = {
         first : {
-        date:json.forecast.forecastday[0].date,
+        date:json.forecast.forecastday[0].date_epoch,
         icon: json.forecast.forecastday[0].day.condition.icon,
         humidity: json.forecast.forecastday[0].day.avghumidity,
         wind_mph: json.forecast.forecastday[0].day.maxwind_mph,
@@ -180,7 +192,7 @@ export default {
         mintemp_f: json.forecast.forecastday[0].day.mintemp_f,
         },
         second: {
-        date:json.forecast.forecastday[1].date,
+        date:json.forecast.forecastday[1].date_epoch,
         icon: json.forecast.forecastday[1].day.condition.icon,
         humidity: json.forecast.forecastday[1].day.avghumidity,
         wind_mph: json.forecast.forecastday[1].day.maxwind_mph,
@@ -191,7 +203,7 @@ export default {
         mintemp_f: json.forecast.forecastday[1].day.mintemp_f,
         },
         third:{
-        date:json.forecast.forecastday[2].date,
+        date:json.forecast.forecastday[2].date_epoch,
         icon: json.forecast.forecastday[2].day.condition.icon,
         humidity: json.forecast.forecastday[2].day.avghumidity,
         wind_mph: json.forecast.forecastday[2].day.maxwind_mph,
