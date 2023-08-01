@@ -132,7 +132,7 @@ export default {
   name: 'LandingPage',
   data() {
     return {
-      searchOpened: true,
+      searchOpened: false,
       weatherObj: {},
       searchLocationInput: null,
       //London takes the place of currenttLocation too
