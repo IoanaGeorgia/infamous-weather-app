@@ -24,7 +24,7 @@
 <span class="material-icons" style='font-size:20px'>
 location_on 
 </span>
-<span>London</span>
+<span>{{currentLocation}}</span>
 </p>
   </div>
 
@@ -40,9 +40,11 @@ close
   <span class="searchIcon material-icons-outlined">
 search
 </span>
-<input class='searchInput'>
+<input v-model='searchLocationInput' class='searchInput'>
 </span>
-<button class='searchButton'>Search</button>
+<button class='searchButton' @click='searchByLocation()'
+> 
+Search</button>
   </div>
   </div>
 
@@ -64,6 +66,8 @@ export default {
     return{
       searchOpened:true,
       weatherObj:{},
+      searchLocationInput:null,
+      defaultLocation:"London",
       weatherToday:{
           icon:'',
           text:'',
@@ -79,7 +83,9 @@ export default {
   },
   mounted(){
     console.log('brr')
-    this.getWeather()
+          //normally, I would use geolocation and google API to get the city based on the visitor, however, due to security reasons, I don't want my key to be online, so I will hardcode London here
+    this.currentLocation = this.defaultLocation
+    this.getWeather(this.currentLocation)
   },
   computed:{
     currentDate(){
@@ -91,12 +97,13 @@ export default {
 
         return day+', '+date + month
     },
-    currentLocation(){
-      //normally, I would use geolocation and google API to get the city based on the visitor, however, due to security reasons, I don't want my key to be online, so I will hardcode London here
-      return "London"
-    }
   },
   methods:{
+    searchByLocation(){
+  //  normally, autocomplete and error handling for the location input would be implemented using ( I would choose Google API places autocomplete), but due to security reasons I won't be putting my google api key here. no autocomplete and error handling here
+    this.getWeather(this.searchLocationInput)
+    this.currentLocation = this.searchLocationInput
+    },
     searchPlaces(){
       this.searchOpened=!this.searchOpened
     },
@@ -104,12 +111,13 @@ export default {
       console.log("https:"+a)
       return "https:"+a
     },
-       async getWeather() {
+       async getWeather(loc) {
 
-    const response = await fetch('https://api.weatherapi.com/v1/forecast.json?key=51b610f3b328481a908142828233107&q=London&days=3&aqi=no&alerts=no')
+    const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=51b610f3b328481a908142828233107&q=${loc}&days=3&aqi=no&alerts=no`)
     const json =  await response.json();
     this.weatherObj = json
 
+// console.log(response, 'rr')
     this.weatherToday={
           icon:json.current.condition.icon,
           text:json.current.condition.text,
