@@ -50,8 +50,28 @@
     <div class="details">
 
     <p class='detailsDegrees'>
-    <button :class="{ 'degreesButtonSelected': degreesStyling, 'degreesButtonUnselected': !degreesStyling  }" @click='setDegrees("C")'>°C</button>
-    <button :class="{ 'degreesButtonSelected': degreesStyling, 'degreesButtonUnselected': !degreesStyling  }" @click='setDegrees("F")'>°F</button>
+    <button :class="[degreesStyling ? 'degreesButtonSelected' : 'degreesButtonUnselected']" @click='setDegrees("C")'>°C</button>
+    <button :class="[!degreesStyling ? 'degreesButtonSelected' : 'degreesButtonUnselected']" @click='setDegrees("F")'>°F</button>
+    </p>
+
+    <div class='forecastWrapper'>
+    <div v-for='day in forecastObject' class='forecast'>
+      <p class='forecastDate'>{{day.date}}</p>
+          <img class="forecastImage" :src="getIcon(day.icon)" />
+
+<p class='forecastDegreesWrapper'>
+      <p class="forecastDegrees">
+      <span v-if="degrees==='C'"> {{ day.maxtemp_c }}</span>
+      <span v-else> {{ day.maxtemp_f }}</span>°{{degrees}}
+      </p>
+
+      <p class="forecastDegrees">
+      <span v-if="degrees==='C'"> {{ day.mintemp_c }}</span>
+      <span v-else> {{ day.mintemp_f }}</span>°{{degrees}}
+      </p>
+    </p>
+    </div>
+    </div>
     </p>
     
     
@@ -70,6 +90,7 @@ export default {
       //London takes the place of currenttLocation too
       defaultLocation: 'London',
       degrees: "C",
+      forecastObject:{},
       weatherToday: {
         icon: '',
         text: '',
@@ -99,8 +120,11 @@ export default {
       return day + ', ' + date + month;
     },
     degreesStyling(){
-      console.log(this.degrees)
-      this.degrees === "C" ? true : false
+      if(this.degrees == "C"){
+        return true
+      } else{
+        return false
+      }
     }
   },
   methods: {
@@ -130,6 +154,7 @@ export default {
         `https://api.weatherapi.com/v1/forecast.json?key=51b610f3b328481a908142828233107&q=${loc}&days=3&aqi=no&alerts=no`);
       const json = await response.json();
       this.weatherObj = json;
+      console.log(this.weatherObj.forecast.forecastday[0].day)
       this.weatherToday = {
         icon: json.current.condition.icon,
         text: json.current.condition.text,
@@ -140,7 +165,46 @@ export default {
         pressure_in: json.current.pressure_in,
         temp_c: json.current.temp_c,
         temp_f: json.current.temp_f,
-      };
+      }
+
+      this.forecastObject = {
+        first : {
+        date:json.forecast.forecastday[0].date,
+        icon: json.forecast.forecastday[0].day.condition.icon,
+        humidity: json.forecast.forecastday[0].day.avghumidity,
+        wind_mph: json.forecast.forecastday[0].day.maxwind_mph,
+        vis_miles: json.forecast.forecastday[0].day.avgvis_miles,
+        maxtemp_c: json.forecast.forecastday[0].day.maxtemp_c,
+        maxtemp_f: json.forecast.forecastday[0].day.maxtemp_f,
+        mintemp_c: json.forecast.forecastday[0].day.mintemp_c,
+        mintemp_f: json.forecast.forecastday[0].day.mintemp_f,
+        },
+        second: {
+        date:json.forecast.forecastday[1].date,
+        icon: json.forecast.forecastday[1].day.condition.icon,
+        humidity: json.forecast.forecastday[1].day.avghumidity,
+        wind_mph: json.forecast.forecastday[1].day.maxwind_mph,
+        vis_miles: json.forecast.forecastday[1].day.avgvis_miles,
+        maxtemp_c: json.forecast.forecastday[1].day.maxtemp_c,
+        maxtemp_f: json.forecast.forecastday[1].day.maxtemp_f,
+        mintemp_c: json.forecast.forecastday[1].day.mintemp_c,
+        mintemp_f: json.forecast.forecastday[1].day.mintemp_f,
+        },
+        third:{
+        date:json.forecast.forecastday[2].date,
+        icon: json.forecast.forecastday[2].day.condition.icon,
+        humidity: json.forecast.forecastday[2].day.avghumidity,
+        wind_mph: json.forecast.forecastday[2].day.maxwind_mph,
+        vis_miles: json.forecast.forecastday[2].day.avgvis_miles,
+        maxtemp_c: json.forecast.forecastday[2].day.maxtemp_c,
+        maxtemp_f: json.forecast.forecastday[2].day.maxtemp_f,
+        mintemp_c: json.forecast.forecastday[2].day.mintemp_c,
+        mintemp_f: json.forecast.forecastday[2].day.mintemp_f,
+        }
+      }
+
+
+      console.log(this.forecastObject.first)
     },
   },
 };
