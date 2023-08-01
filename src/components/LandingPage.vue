@@ -77,6 +77,21 @@
     </div>
     </p>
     
+
+    <div class='detailsCardWrapper'>
+    <p class='detailsCardsTitle'>Today's Highlights</p>
+    <div class='detailsCards'>
+    <div class='detailsCard'>
+    <p class='detailsCardTitle'>Wind status<p>
+
+      <span class='detailsCardMain'> {{ weatherToday.wind_mph }}<span class='detailsCardMainSpan'>mph</span></span>
+
+      <p class='windDirection'>{{weatherToday.wind_dir}}</p>
+
+      </div>
+    </div>
+    </div>
+    </div>
     
     </div>
   </div>
