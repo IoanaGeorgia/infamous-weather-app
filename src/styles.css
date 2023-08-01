@@ -18,21 +18,31 @@ button {
 }
 .detailsCardMain{
   font-weight: bold;
-  font-size:30px;
+  font-size:35px;
+  margin:10px 0px;
 }
 .detailsCardMainSpan{
   font-size:initial;
   font-weight: initial;
 }
+.detailsCards{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
 .detailsCard{
   background-color: var(--lightBlue);
   color:white;
-  padding:5px 10px;
+  padding:20px 5px;
   width:70%;
+  min-width:200px;
+  max-width:300px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  margin:30px;
+  border:2px solid gray;
 }
 .detailsCardsTitle{
   color:white;
@@ -40,7 +50,7 @@ button {
   font-size:20px;
 }
 .forecastWrapper{
-  display: flex;
+  /* display: flex; */
   justify-content: space-between;
   align-items: flex-end;
   flex-wrap:wrap;

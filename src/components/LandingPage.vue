@@ -80,17 +80,47 @@
 
     <div class='detailsCardWrapper'>
     <p class='detailsCardsTitle'>Today's Highlights</p>
+
     <div class='detailsCards'>
+
     <div class='detailsCard'>
-    <p class='detailsCardTitle'>Wind status<p>
+    <div class='detailsCardTitle'>Wind status</div>
 
       <span class='detailsCardMain'> {{ weatherToday.wind_mph }}<span class='detailsCardMainSpan'>mph</span></span>
 
-      <p class='windDirection'>{{weatherToday.wind_dir}}</p>
+      <div class='windDirection'>{{weatherToday.wind_dir}}</div>
 
       </div>
+
+
+
+    <div class='detailsCard'>
+    <div class='detailsCardTitle'>Humidity</div>
+
+      <span class='detailsCardMain'> {{ weatherToday.humidity }}<span class='detailsCardMainSpan'>%</span></span>
+
+      <div class='windDirection'>enter progress bar here</div>
+
+      </div>
+
+
+
+    <div class='detailsCard'>
+    <p class='detailsCardTitle'>Visibility</p>
+
+      <span class='detailsCardMain'> {{ weatherToday.vis_miles }}<span class='detailsCardMainSpan'>miles</span></span>
+
+      </div>
+
+    <div class='detailsCard'>
+    <p class='detailsCardTitle'>Air Pressure</p>
+
+      <span class='detailsCardMain'> {{ weatherToday.pressure_in }}<span class='detailsCardMainSpan'>mb</span></span>
+
+      </div>
+
     </div>
-    </div>
+    <!-- </div> -->
     </div>
     
     </div>
@@ -185,7 +215,7 @@ export default {
       this.weatherToday = {
         icon: json.current.condition.icon,
         text: json.current.condition.text,
-        humidity: json.current.humidify,
+        humidity: json.current.humidity,
         wind_mph: json.current.wind_mph,
         wind_dir: json.current.wind_dir,
         vis_miles: json.current.vis_miles,
