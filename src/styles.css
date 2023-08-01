@@ -1,124 +1,159 @@
-
-:root{
-  --darkBlue:rgb(0, 0, 42);
-  --lightBlue:rgb(33, 33, 74);
-  --darkGray:#a1a1a1;
-  --lightGray:#cacaca;
-  --buttonBlue:rgb(52, 89, 222);
+:root {
+  --darkBlue: rgb(0, 0, 42);
+  --lightBlue: rgb(33, 33, 74);
+  --veryLightBlue: rgb(67, 67, 158);
+  --darkGray: #a1a1a1;
+  --lightGray: #cacaca;
+  --buttonBlue: rgb(52, 89, 222);
 }
 
-body{
-  background:var(--darkBlue);
-  padding:0px;
-  margin:0px;
+body {
+  background: var(--darkBlue);
+  padding: 0px;
+  margin: 0px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-button{
-  cursor:pointer;
+button {
+  cursor: pointer;
 }
-.searchInputWrapper{
+.details {
+  width:60%;
+  padding: 10px 50px;
+
+}
+.detailsDegrees {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.detailsDegrees button:nth-of-type(1){
+  margin: 0px 15px;
+}
+.degreesButtonSelected{
+  border-radius: 50%;
+  height:30px;
+  width:30px;
+  border:none;
+  font-weight: bold;
+  color:var(--darkBlue);
+  background-color: white;
+}
+.degreesButtonUnselected{
+  border-radius: 50%;
+  height:30px;
+  width:30px;
+  border:none;
+  font-weight: bold;
+  color:white;
+  background-color: var(--veryLightBlue);
+}
+.mainWrapper {
+  display: flex;
+}
+.searchInputWrapper {
   display: flex;
   justify-content: center;
   border: 1px solid var(--lightGray);
-  padding:4px;
-  width:70%;
+  padding: 4px;
+  width: 70%;
 }
-.searchButton{
-  background-color:var(--buttonBlue);
-  color:white;
-  border:none;
+.searchButton {
+  background-color: var(--buttonBlue);
+  color: white;
+  border: none;
   margin-left: 15px;
-  padding:10px;
+  padding: 10px;
 }
-.searchIcon{
-  color:var(--darkGray);
-  font-size:20px;
-  padding:2px 0px;
-  margin:2px;
+.searchIcon {
+  color: var(--darkGray);
+  font-size: 20px;
+  padding: 2px 0px;
+  margin: 2px;
 }
-.searchInput{
+.searchInput {
   background-color: transparent;
-  border:none;
-  outline:none;
-  width:80%;
+  border: none;
+  outline: none;
+  width: 80%;
   caret-color: var(--lightGray);
-  color:var(--lightGray);
+  color: var(--lightGray);
 }
-.overviewSearch{
+.overviewSearch {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top:3vh;
+  margin-top: 3vh;
 }
-.overviewCloseButton{
-  background:transparent;
-  border:none;
-  color:white;
+.overviewCloseButton {
+  background: transparent;
+  border: none;
+  color: white;
   position: absolute;
-  top:1vh;
+  top: 1vh;
   right: 5vh;
 }
-.currentDate{
-  color:var(--darkGray);
-  font-size:14px;
-  margin-top:13vh;
-  margin-bottom:5vh;
+.currentDate {
+  color: var(--darkGray);
+  font-size: 14px;
+  margin-top: 13vh;
+  margin-bottom: 5vh;
   text-align: center;
 }
-.overviewImage{
-  width:70%;
-  padding:2em 0em 0em 0em;
+.overviewImage {
+  width: 70%;
+  padding: 2em 0em 0em 0em;
   display: block;
-  margin:auto;
+  margin: auto;
 }
-.overviewLocation{
-  color:var(--darkGray);
-  display:flex;
+.overviewLocation {
+  color: var(--darkGray);
+  display: flex;
   align-items: center;
   justify-content: center;
-
 }
-.overviewTemp{
-  color:white;
-  font-size:60px;
+.overviewTemp {
+  color: white;
+  font-size: 60px;
   font-weight: bolder;
   text-align: center;
-  margin:0px;
+  margin: 0px;
 }
-.overviewDescription{
-  color:var(--lightGray);
-  font-size:18px;
+.overviewDescription {
+  color: var(--lightGray);
+  font-size: 18px;
   text-align: center;
-  margin-top:3em;
+  margin-top: 3em;
 }
-.overviewTempDegrees{
-  color:var(--lightGray);
+.overviewTempDegrees {
+  color: var(--lightGray);
   font-weight: lighter;
-  font-size:25px;
+  font-size: 25px;
 }
-.overview{
-  background:var(--lightBlue);
-  width:25%;
-  padding:5vh 5vh;
-  height:90vh;
+.overview {
+  background: var(--lightBlue);
+  width: 25%;
+  max-width: 25%;
+  min-width: 25%;
+  padding: 5vh 5vh;
+  height: 90vh;
   position: relative;
 }
-.overviewHeader{
+.overviewHeader {
   /* background:red; */
-  display:flex;
+  display: flex;
   justify-content: space-between;
 }
-.overviewSearchButton{
+.overviewSearchButton {
   background: var(--darkGray);
-  color:white;
-  border:none;
-  padding:0px 15px;
+  color: white;
+  border: none;
+  padding: 0px 15px;
 }
-.overviewLocationButton{
-  background:var(--darkGray);
-  color:white;
-  border:none;
+.overviewLocationButton {
+  background: var(--darkGray);
+  color: white;
+  border: none;
   border-radius: 50%;
-  height:33px;
-  width:33px;
+  height: 33px;
+  width: 33px;
 }
