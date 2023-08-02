@@ -102,7 +102,7 @@
       <div class='humidityProgressWrapper'>
       <div class='progressLabels'>
       <div>0</div>
-      <div>50</div>
+      <div style="margin-left:20px">50</div>
       <div>100</div>
       </div>
 
@@ -225,7 +225,7 @@ export default {
         `https://api.weatherapi.com/v1/forecast.json?key=51b610f3b328481a908142828233107&q=${loc}&days=3&aqi=no&alerts=no`);
       const json = await response.json();
       this.weatherObj = json;
-      console.log(this.weatherObj.forecast.forecastday[0])
+      console.log(this.weatherObj)
       this.weatherToday = {
         icon: json.current.condition.icon,
         text: json.current.condition.text,
