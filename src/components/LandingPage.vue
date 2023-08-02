@@ -99,7 +99,20 @@
 
       <span class='detailsCardMain'> {{ weatherToday.humidity }}<span class='detailsCardMainSpan'>%</span></span>
 
-      <div class='windDirection'>enter progress bar here</div>
+      <div class='humidityProgressWrapper'>
+      <div class='progressLabels'>
+      <div>0</div>
+      <div>50</div>
+      <div>100</div>
+      </div>
+
+
+      <div class='progressWrapper'>
+      <div class='progressBar' :style="{'width': weatherToday.humidity+`%`}"></div>
+      </div>
+
+             <div class='progressPercent'>%</div> 
+      </div>
 
       </div>
 
@@ -137,6 +150,7 @@ export default {
       searchLocationInput: null,
       //London takes the place of currenttLocation too
       defaultLocation: 'London',
+      currentLocation:'',
       degrees: "C",
       forecastObject:{},
       weatherToday: {
