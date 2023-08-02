@@ -16,6 +16,14 @@ body {
 button {
   cursor: pointer;
 }
+.devInfo{
+  color:var(--darkGray);
+  font-size:12px;
+  text-align: center;
+}
+.devInfo a, .devInfo a:active, .devInfo a:focus, .devInfo a:visited{
+  color:var(--lightGray)
+}
 .detailsCardMain{
   font-weight: bold;
   font-size:35px;
