@@ -88,7 +88,7 @@
 
       <span class='detailsCardMain'> {{ weatherToday.wind_mph }}<span class='detailsCardMainSpan'>mph</span></span>
 
-      <div class='windDirection'>{{weatherToday.wind_dir}}</div>
+      <div class='windDirectionCoord'>{{weatherToday.wind_dir}}</div>
 
       </div>
 
@@ -133,10 +133,11 @@
       </div>
 
     </div>
-    <!-- </div> -->
+
     </div>
     
     </div>
+            <p class='devInfo'>Challenge created by Ioana P. for <a href="https://devchallenges.io/challenges/mM1UIenRhK808W8qmLWv">devChallenges.io</a> with Vue<p>
   </div>
 </template>
 
